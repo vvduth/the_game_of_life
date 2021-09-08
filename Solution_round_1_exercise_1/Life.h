@@ -12,6 +12,7 @@ public:
 	void setMaxCol(int maxcol);
 	int getMaxRow();
 	int getMaxCol();
+	
 	Life(int maxrow, int maxcol){
 		this->maxrow = maxrow;
 		this->maxcol = maxcol;

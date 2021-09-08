@@ -32,11 +32,6 @@ int setUpGrid(int a) {
          while (file_ >> number >> text >> number2) {
              cout << number << " " << " " << number2 << " " << '\n';
           }
-
-
-
-
-
          file_.close();
      }
      else {
@@ -45,12 +40,35 @@ int setUpGrid(int a) {
     return std::stoi(text);
 }
 
+void setUpGrid2(int a) {
+
+    ifstream file_("text.txt");
+    string dummyLine;
+    string dummLine2;
+    string line_;
+    getline(file_, dummyLine);
+    getline(file_, dummLine2);
+    // Begin reading your stream here
+    //while (file_);
+    if (file_.is_open()) {
+        while (getline(file_, line_)) {
+            cout << line_<< '\n';
+        }
+        file_.close();
+    }
+    else {
+        cout << "wrong";
+    }
+}
+
 
 void instructions(Life obj, int a , int b)
 /*
 Pre:  None.
 Post: Instructions for using the Life program have been printed.
 */
+
+
 
 {   
     
@@ -76,12 +94,13 @@ Uses: The class Life and its methods initialize(), print(), and update().
 */
 
 {
-    /*int a, b;
+    int a, b;
     cout << "Welcome to Conway's game of Life." << endl;
     cout << "Please enter max row: "; cin >> a; cout << endl;
-    cout << "Please enter max col: "; cin >> b; cout << endl;*/
-    Life configuration(setUpGrid(0),setUpGrid(1));
-    instructions(configuration,setUpGrid(0),setUpGrid(1));
+    cout << "Please enter max col: "; cin >> b; cout << endl;
+   //setUpGrid2(1);
+    Life configuration(a,b);
+    instructions(configuration,a,b);
     configuration.initialize();
     configuration.print();
     cout << "Continue viewing new generations? " << endl;
