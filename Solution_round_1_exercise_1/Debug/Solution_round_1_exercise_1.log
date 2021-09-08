@@ -1,4 +1,1 @@
-﻿  main.cpp
-C:\Users\ducth\git_repos2\Solution_round_1_exercise_1\Solution_round_1_exercise_1\main.cpp(14,9): warning C4101: 'number': unreferenced local variable
-C:\Users\ducth\git_repos2\Solution_round_1_exercise_1\Solution_round_1_exercise_1\main.cpp(16,9): warning C4101: 'number2': unreferenced local variable
-  Solution_round_1_exercise_1.vcxproj -> C:\Users\ducth\git_repos2\Solution_round_1_exercise_1\Debug\Solution_round_1_exercise_1.exe
+﻿  Solution_round_1_exercise_1.vcxproj -> C:\Users\ducth\git_repos2\Solution_round_1_exercise_1\Debug\Solution_round_1_exercise_1.exe
