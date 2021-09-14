@@ -1,6 +1,6 @@
 #include "utility.h"
 #include "life.h"
-#include<fstream>
+
 #include<string>
 using namespace std;
 
@@ -10,7 +10,7 @@ int setUpGrid(int a) {
     //cout << "Enter filename" << " "; cin >> filename;
 
     std::string line_;
-    ifstream file_("text.txt");
+    ifstream file_("text2.txt");
     int number;
     std::string text;
     int number2;
@@ -40,7 +40,7 @@ int setUpGrid(int a) {
     return std::stoi(text);
 }
 
-void setUpGrid2(int a) {
+string setUpGrid2(int a) {
 
     ifstream file_("text.txt");
     string dummyLine;
@@ -59,6 +59,7 @@ void setUpGrid2(int a) {
     else {
         cout << "wrong";
     }
+    return line_;
 }
 
 
@@ -94,13 +95,14 @@ Uses: The class Life and its methods initialize(), print(), and update().
 */
 
 {
-    int a, b;
+    /*int a, b;
     cout << "Welcome to Conway's game of Life." << endl;
     cout << "Please enter max row: "; cin >> a; cout << endl;
-    cout << "Please enter max col: "; cin >> b; cout << endl;
-   //setUpGrid2(1);
-    Life configuration(a,b);
-    instructions(configuration,a,b);
+    cout << "Please enter max col: "; cin >> b; cout << endl;*/
+    //setUpGrid2(1); cout << endl;
+    //cout << setUpGrid2(1);
+    Life configuration(setUpGrid(0),setUpGrid(1));
+    instructions(configuration,setUpGrid(0),setUpGrid(1));
     configuration.initialize();
     configuration.print();
     cout << "Continue viewing new generations? " << endl;

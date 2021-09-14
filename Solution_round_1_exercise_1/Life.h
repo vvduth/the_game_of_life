@@ -1,4 +1,5 @@
 #pragma once
+#include<fstream>
 using namespace std;
 //const int maxrow = 20, maxcol = 60;    //  grid dimensions
 

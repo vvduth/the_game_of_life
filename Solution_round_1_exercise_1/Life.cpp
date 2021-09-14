@@ -163,11 +163,22 @@ Post: The Life object contains a configuration specified by the user.
 
     }
 
-    for (row = 0; row < maxrow ; row++)
-        for (col = 0; col < maxcol ; col++)
-            grid[row][col] = 0;
+    ifstream file{ "text.txt" };
+    if (!file.is_open()) {};
 
-    cout << "List the coordinates for living cells." << endl;
+    for (int i{}; i != maxrow; ++i) {
+        for (int j{}; j != maxcol; ++j) {
+            file >> grid[i][j];
+        }
+    }
+
+    /*for (row = 0; row < maxrow; row++)
+        for (col = 0; col < maxcol ; col++)
+            grid[row][col] = 0;*/
+
+
+
+    /*cout << "List the coordinates for living cells." << endl;
     cout << "Terminate the list with the special pair -1 -1" << endl;
     cin >> row >> col;
 
@@ -180,7 +191,9 @@ Post: The Life object contains a configuration specified by the user.
         else
             cout << "Row " << row << " is out of range." << endl;
         cin >> row >> col;
-    }
+    }*/
+
+
 }
 
 
