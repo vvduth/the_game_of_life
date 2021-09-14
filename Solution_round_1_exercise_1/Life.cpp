@@ -1,7 +1,7 @@
 #include"Life.h"
-#include<iostream>
+
 using namespace std;
-int Life::neighbor_count(int row, int col)
+int Life::neighbor_count(int row, int col) const 
 /*
 Pre:  The Life object contains a configuration, and the coordinates
       row and col define a cell inside its hedge.
@@ -108,7 +108,7 @@ int Life::getMaxRow() {
     return maxrow;
 }
 
-void Life::update()
+void  Life::update() const
 /*
 Pre:  The Life object contains a configuration.
 Post: The Life object contains the next generation of configuration.
@@ -148,7 +148,7 @@ Post: The Life object contains the next generation of configuration.
 
 
 
-void Life::initialize()
+void  Life::initialize()
 /*
 Pre:  None.
 Post: The Life object contains a configuration specified by the user.
@@ -196,8 +196,27 @@ Post: The Life object contains a configuration specified by the user.
 
 }
 
+void Life::exportToTxt()
+{
+    ofstream qfile("output.txt", ios_base::app);
+    int row, col;
+    cout << "\nThe current Life configuration is:" << endl;
+    for (row = 0; row < maxrow; row++) {
+        for (col = 0; col < maxcol; col++)
+            if (grid[row][col] == 1) qfile << '*';
+            else qfile << '.';
+            //qfile << grid[row][col];
+        qfile << endl;
+    }
+    qfile.close();
+    cout << endl;
+    
 
-void Life::print()
+
+}
+
+
+void Life::print() const 
 /*
 Pre:  The Life object contains a configuration.
 Post: The configuration is written for the user.

@@ -145,9 +145,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Life.h" />
+    <ClInclude Include="timercpp.h" />
     <ClInclude Include="utility.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="output.txt" />
     <Text Include="text.txt" />
     <Text Include="text2.txt" />
   </ItemGroup>

@@ -4,6 +4,47 @@
 #include<string>
 using namespace std;
 
+
+class Timer {
+    std::atomic<bool> active{ true };
+
+public:
+    void setTimeout(void(*func)(), int delay);
+    void setInterval(Life obj, int interval) {
+        active = true;
+        std::thread t([=]() {
+            while (active.load()) {
+                std::this_thread::sleep_for(std::chrono::milliseconds(interval));
+                if (!active.load()) return;
+                obj.update();
+                obj.print();
+            }
+            });
+        t.detach();
+    };
+    void stop();
+
+};
+
+void Timer::setTimeout(void (*func)(), int delay) {
+    active = true;
+    std::thread t([=]() {
+        if (!active.load()) return;
+        std::this_thread::sleep_for(std::chrono::milliseconds(delay));
+        if (!active.load()) return;
+        func();
+
+        });
+    t.detach();
+}
+
+
+
+
+void Timer::stop() {
+    active = false;
+}
+
 int setUpGrid(int a) {
 
     //std::string filename;
@@ -95,9 +136,11 @@ Uses: The class Life and its methods initialize(), print(), and update().
 */
 
 {
-    /*int a, b;
+    Timer t;
+    int a, b;
     cout << "Welcome to Conway's game of Life." << endl;
-    cout << "Please enter max row: "; cin >> a; cout << endl;
+    
+    /*cout << "Please enter max row: "; cin >> a; cout << endl;
     cout << "Please enter max col: "; cin >> b; cout << endl;*/
     //setUpGrid2(1); cout << endl;
     //cout << setUpGrid2(1);
@@ -107,8 +150,15 @@ Uses: The class Life and its methods initialize(), print(), and update().
     configuration.print();
     cout << "Continue viewing new generations? " << endl;
     while (user_says_yes()) {
-        configuration.update();
-        configuration.print();
-        cout << "Continue viewing new generations? " << endl;
+
+        t.setInterval(configuration, 3000);
+        //configuration.update();
+        //configuration.print();
+        
+        //cout << "Continue viewing new generations? " << endl;
     }
+
+    
+    configuration.exportToTxt();
+    
 }
